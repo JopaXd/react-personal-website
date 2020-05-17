@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header-image{
+	background-image: url('/coding-04.jpg');
+	background-position: center center;
+    background-size: cover;
+}
