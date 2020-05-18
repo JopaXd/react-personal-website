@@ -12,8 +12,41 @@ code {
     monospace;
 }
 
+.navbar-link::after{
+  border-color:white !important;
+}
+
+.navbar-link{
+  background: none !important;
+}
+
+.navbar-link:hover{
+  background: none !important;
+}
+
+.navbar-item:hover{
+  background:none !important;
+}
+
+.navbar-dropdown{
+  background: none !important;
+}
+
+.navbar-dropdown:hover{
+  background: none !important;
+}
+
 .header-image{
 	background-image: url('/coding-04.jpg');
 	background-position: center center;
     background-size: cover;
+}
+
+.content{
+  text-align: center;
+}
+
+.profilePicture{
+  width: 256px;
+  height: 256px;
 }
