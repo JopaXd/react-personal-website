@@ -36,8 +36,12 @@ code {
   background: none !important;
 }
 
+.navbar-menu{
+  background:transparent !important;
+}
+
 .header-image{
-	background-image: url('/coding-04.jpg');
+	background-image: url('/coding-04.jpg') !important;
 	background-position: center center;
     background-size: cover;
 }

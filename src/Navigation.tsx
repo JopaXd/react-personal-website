@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart,
 
 function Navigation() {
   let [dateTime, setDateTime] = useState("")
+  const [isActive, setisActive] = React.useState(false);
   useEffect(() => {
     setInterval(function () {
       let dateObj:Date = new Date()
@@ -23,9 +24,11 @@ function Navigation() {
           <NavbarItem>
               <img src={brand} style={{ marginRight: 5 }} /> Pavle Milanov
           </NavbarItem>
-          <NavbarBurger />
+          <NavbarBurger onClick={() => {
+                  setisActive(!isActive);
+                }} />
       </NavbarBrand>
-      <NavbarMenu >
+      <NavbarMenu className={`navbar-menu ${isActive ? "is-active" : ""}`}>
           <NavbarStart>
               <NavbarItem href='#/'>Home</NavbarItem>
               <NavbarItem href="#/">Projects</NavbarItem>

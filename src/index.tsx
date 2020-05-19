@@ -5,9 +5,12 @@ import Navigation from './Navigation'
 import 'font-awesome/css/font-awesome.css'
 import { Title, Subtitle, Columns, Column, Box, Icon } from 'bloomer'
 import * as serviceWorker from './serviceWorker';
+import FooterBot from './Footer'
 
 //TODO: The current font-awesome css does not include the icons that i need. I will either install the react components or find another way.
 //TODO: For god's sake please fix navbar on phone devices.
+
+const languageIconsList:Array<string> = ["/git.svg", "/javascript.svg", "/linux.svg" ,"/csharp.svg", "/react.svg", "/python.svg" ,"/vuejs.svg", "/docker.svg", "/typescript.svg"]
 
 ReactDOM.render(
   <React.StrictMode>
@@ -41,9 +44,15 @@ ReactDOM.render(
          <Title>Technologies i have experience with:</Title>
          <br>
          </br>
-         <Columns isCentered>
-           <Column><Icon isSize='large' className='fab fa-python' /></Column>
+         <Columns isCentered> 
+           {languageIconsList.map((icon, index) => {
+               //Recieving an error that every element should have a key. Will do that later
+                return <Column key={index}><img src={icon} height="87" width="100" /></Column>
+            })}
          </Columns>
+         <br>
+         </br>
+         <FooterBot />
        </div>
   	</div>
   </React.StrictMode>,
