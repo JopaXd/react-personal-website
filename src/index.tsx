@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Navigation from './Navigation'
 import 'font-awesome/css/font-awesome.css'
-import { Title, Subtitle, Columns, Column, Box, Icon } from 'bloomer'
+import { Title, Subtitle, Columns, Column, Box } from 'bloomer'
 import * as serviceWorker from './serviceWorker';
 import FooterBot from './Footer'
 import Projects from './projects'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const languageIconsList:Array<string> = ["/git.svg", "/javascript.svg", "/linux.svg" ,"/csharp.svg", "/react.svg", "/python.svg" ,"/vuejs.svg", "/docker.svg", "/typescript.svg"]
 
