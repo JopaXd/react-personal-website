@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bulma/css/bulma.css'
 import Navigation from './Navigation'
 import FooterBot from './Footer'
 import { Title, Subtitle, Container ,Columns, Column, Box, Panel, PanelHeading, PanelBlock, Control, Input, Icon, PanelTab, PanelTabs, Button, PanelIcon } from 'bloomer';
 import './projects.css'
 
-//Still thinking about the design for this one.
+interface Dictionary<T>{
+    [Key : string]: T;
+}
 
 function Projects(){
+    const result : string[] = []
+    let [projects, setProjects] = useState(result)
+    useEffect(() => {
+        let projectList:Array<string> = ["project1", "project2"];
+        fetch("https://api.github.com/users/JopaXd/repos")
+        .then(res => res.json())
+        .then((result) =>{
+            result.forEach( (project:Dictionary<any>) =>{
+                projectList.push(project.name)
+            })
+        });
+        //here will be the logic for search feature.
+        //This returns an empty list... Dont question.
+        setProjects(projectList);
+    }, []);
     return (
         <div className="main">
             <section className="hero is-primary is-fullheight header-image-p">
@@ -53,30 +70,15 @@ function Projects(){
                         </PanelBlock>
                         <PanelTabs>
                             <PanelTab isActive>All</PanelTab>
-                            <PanelTab>Public</PanelTab>
-                            <PanelTab>Private</PanelTab>
-                            <PanelTab>Sources</PanelTab>
-                            <PanelTab>Fork</PanelTab>
                         </PanelTabs>
-                        <PanelBlock isActive>
-                            <PanelIcon className="fa fa-book" />
-                            Bloomer
-                        </PanelBlock>
-                        <PanelBlock>
-                            <PanelIcon className="fa fa-code-fork" />
-                            RxJS
-                        </PanelBlock>
-                        <PanelBlock>
-                            <PanelIcon className="fa fa-code-fork" />
-                            Webpack
-                        </PanelBlock>
-                        <PanelBlock>
-                            <PanelIcon className="fa fa-code-fork" />
-                            Typescript
-                        </PanelBlock>
-                        <PanelBlock>
-                            <Button isOutlined isFullWidth isColor='primary'> Reset all filters</Button>
-                        </PanelBlock>
+                        {projects.map(function(project:string, index:number){
+                            return(
+                                <PanelBlock key={index}>
+                                    <PanelIcon className="fa fa-code-fork" />
+                                    {project}
+                                </PanelBlock>
+                            );
+                        })}
                     </Panel>
                 </Container>
             </div>

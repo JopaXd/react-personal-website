@@ -60,9 +60,9 @@ class Navigation extends React.Component<NProps, NStates>{
                 <NavbarItem hasDropdown isHoverable>
                     <NavbarLink href='#/'>More</NavbarLink>
                     <NavbarDropdown>
-                        <NavbarItem href='#/'>About</NavbarItem>
+                        <NavbarItem href='#/'><Link className="navbar-item" to="/more">More</Link></NavbarItem>
                         <NavbarDivider />
-                        <NavbarItem href='#/'>Contact</NavbarItem>
+                        <NavbarItem href='#/'><Link className="navbar-item" to="/contact">Contact</Link></NavbarItem>
                     </NavbarDropdown>
                 </NavbarItem>
             </NavbarStart>

@@ -7,7 +7,9 @@ import { Title, Subtitle, Columns, Column, Box } from 'bloomer'
 import * as serviceWorker from './serviceWorker';
 import FooterBot from './Footer'
 import Projects from './projects'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import More from './more'
+import Contact from './contact'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const languageIconsList:Array<string> = ["/git.svg", "/javascript.svg", "/linux.svg" ,"/csharp.svg", "/react.svg", "/python.svg" ,"/vuejs.svg", "/docker.svg", "/typescript.svg"]
 
@@ -58,15 +60,16 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <div className="main">
-        <Route path="/" exact component={Home} />
-        <Route path="/projects" component={Projects} />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/more" component={More} />
+          <Route path="/contact" component={Contact} />
+        </Switch>
       </div>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
