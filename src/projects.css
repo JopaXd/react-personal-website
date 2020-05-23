@@ -1,4 +1,18 @@
 .pcontent{
 	text-align: center;
-	margin-top:15%;
+}
+
+.spacer{
+	height:15vh !important;
+}
+
+.images{
+	max-width: 256px;
+	max-height: 256px;
+}
+
+.header-image-p{
+	background-image: url('/bg-projects.svg') !important;
+	background-position: center center;
+    background-size: cover;
 }
