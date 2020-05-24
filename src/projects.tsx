@@ -10,21 +10,32 @@ interface Dictionary<T>{
 }
 
 function Projects(){
-    const result : string[] = []
-    let [projects, setProjects] = useState(result)
+    let [repos, setRepos] = useState<any>([])
+    let [allRepos, setAllRepos] = useState<any>([])
     useEffect(() => {
-        let projectList:Array<string> = ["project1", "project2"];
+        //Was reading the github api docs. Authentication may be required in the future.
         fetch("https://api.github.com/users/JopaXd/repos")
         .then(res => res.json())
         .then((result) =>{
-            result.forEach( (project:Dictionary<any>) =>{
-                projectList.push(project.name)
-            })
+            setAllRepos(result);
+            setRepos(result);
         });
-        //here will be the logic for search feature.
-        //This returns an empty list... Dont question.
-        setProjects(projectList);
     }, []);
+    function search(e:any){
+        let search:string = e.target.value;
+        if (search === ""){
+            setRepos(allRepos)
+        }
+        else{
+            let searchRepos:any = []
+            repos.forEach( (repo:Dictionary<any>) =>{
+                 if (repo.name.includes(search)){
+                     searchRepos.push(repo)
+                 }
+            })
+            setRepos(searchRepos);
+        }
+    }
     return (
         <div className="main">
             <section className="hero is-primary is-fullheight header-image-p">
@@ -62,20 +73,20 @@ function Projects(){
                         <PanelHeading>Repositories</PanelHeading>
                         <PanelBlock>
                             <Control hasIcons='left'>
-                                <Input isSize='small' placeholder='Search' />
+                                <Input onChange={search} isSize='small' placeholder='Search' />
                                 <Icon isSize='small' isAlign='left'>
                                     <span className='fa fa-search' aria-hidden='true' />
                                 </Icon>
                             </Control>
                         </PanelBlock>
                         <PanelTabs>
-                            <PanelTab isActive>All</PanelTab>
+                            <PanelTab isActive>JopaXd/Repos</PanelTab>
                         </PanelTabs>
-                        {projects.map(function(project:string, index:number){
+                        {repos.map(function(repo:any, index:number){
                             return(
                                 <PanelBlock key={index}>
                                     <PanelIcon className="fa fa-code-fork" />
-                                    {project}
+                                    {repo.name}
                                 </PanelBlock>
                             );
                         })}
